@@ -1,11 +1,12 @@
 from bert_score import BERTScorer
+import torch
 
-class Bert_score():
+class BERTScore():
     def __init__(self, tgt_lang, test_mode=False):
-        self.scorer = BERTScorer(lang=tgt_lang, rescale_with_baseline=True)
+        self.scorer = BERTScorer(lang=tgt_lang, rescale_with_baseline=True, device=torch.device('mps'))
         self.test_mode = test_mode
 
-    def score(self, ref_lines, hyp_lines):
+    def score(self, src_lines, ref_lines, hyp_lines):
         if self.test_mode:
             ref_lines = ref_lines[:2]
             hyp_lines = hyp_lines[:2]
