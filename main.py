@@ -35,20 +35,18 @@ def main():
 
     languages = ['en', 'de', 'es', 'it', 'zh']
 
+    if args.metric != 'bert':
+        scorer = set_scorer(args.metric, 'en', args.test)
+
     for tgt_lang in languages:
-        scorer = set_scorer(args.metric, tgt_lang, args.test)
+        if args.metric == 'bert':
+            scorer = set_scorer(args.metric, tgt_lang, args.test)
 
         for src_lang in languages:
             if tgt_lang == src_lang:
                 continue
-            if tgt_lang == 'en' and src_lang == 'de':
-                continue
             print(f'{src_lang} to {tgt_lang}')
             get_score(scorer, src_lang, tgt_lang, args.metric)
             
-
 if __name__ == "__main__":
     main()
-
-
-

@@ -17,7 +17,7 @@ class COMET:
                 "ref": ref
             })
         if self.test_mode:
-            data = data[:2]
+            data = data[:3]
 
-        model_output = self.model.predict(data, batch_size=6, gpus=0)
+        model_output = self.model.predict(data, batch_size=4, gpus=0)
         return model_output.scores
