@@ -9,4 +9,4 @@
 #SBATCH --account=ec255
 cd /work/ec255/ec255/guojun/Evo
 
-srun run_comet.sh
+srun ./run_comet.sh
