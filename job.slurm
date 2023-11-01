@@ -9,4 +9,6 @@
 #SBATCH --account=ec255
 cd /work/ec255/ec255/guojun/Evo
 
+module load python/3.9.13
+
 srun ./run_comet.sh
