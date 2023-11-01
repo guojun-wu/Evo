@@ -3,9 +3,8 @@
 set -e
 source /work/ec255/ec255/guojun/evo/bin/activate
 
-export BASE_DIR=/work/ec255/ec255/guojun/Evo
-python $BASE_DIR/main.py\
+python main.py\
     --metric 'comet' \
-    --data_path $BASE_DIR/evo_data \
-    --output_path $BASE_DIR/result \
+    --data_path evo_data \
+    --output_path result \
     --test \

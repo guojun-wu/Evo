@@ -7,5 +7,6 @@
 #SBATCH --gres=gpu:1
 
 #SBATCH --account=ec255
+cd /work/ec255/ec255/guojun/Evo
 
-srun /work/ec255/ec255/guojun/Evo/run_comet.sh
+srun run_comet.sh
