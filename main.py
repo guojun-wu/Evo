@@ -13,10 +13,8 @@ def set_scorer(metric, tgt_lang, test_mode=False):
         raise NotImplementedError
     return scorer
 
-def get_score(scorer, src_lang, tgt_lang, metric):
-    base_path = 'evo_data'
-    output_path = 'result'
-    df = pd.read_csv(f'{base_path}/{src_lang}-{tgt_lang}.csv')
+def get_score(scorer, src_lang, tgt_lang, metric, data_path, output_path):
+    df = pd.read_csv(f'{data_path}/{src_lang}-{tgt_lang}.csv')
     source = df['source'].tolist()
     target = df['target'].tolist()
     score_df = pd.DataFrame()
@@ -33,6 +31,8 @@ def get_score(scorer, src_lang, tgt_lang, metric):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', '--metric', type=str, default='bert', help='metric to use')
+    parser.add_argument('--data_path', type=str, default='evo_data', help='data path')
+    parser.add_argument('--output_path', type=str, default='result', help='output path')
     parser.add_argument('--test', action='store_true', help='test mode')
     args = parser.parse_args()
 
@@ -49,7 +49,7 @@ def main():
             if tgt_lang == src_lang:
                 continue
             print(f'{src_lang} to {tgt_lang}')
-            get_score(scorer, src_lang, tgt_lang, args.metric)
+            get_score(scorer, src_lang, tgt_lang, args.metric, args.data_path, args.output_path)
             
 if __name__ == "__main__":
     main()
