@@ -2,6 +2,7 @@ import pandas as pd
 import argparse 
 from bert import BERTScore
 from uncomet import COMET
+import os
 
 def set_scorer(metric, tgt_lang, test_mode=False):
     if metric == 'bert':
@@ -24,8 +25,10 @@ def get_score(scorer, src_lang, tgt_lang, metric):
         sys_output = df[date].tolist()
         sentence_score = scorer.score(source, target, sys_output)
         score_df[date] = sentence_score
-        
-    score_df.to_csv(f'{output_path}/{metric}_{src_lang}-{tgt_lang}.csv', index=False)
+    
+    if not os.path.exists(f'{output_path}/{metric}'):
+        os.makedirs(f'{output_path}/{metric}')
+    score_df.to_csv(f'{output_path}/{metric}/{src_lang}-{tgt_lang}.csv', index=False)
 
 def main():
     parser = argparse.ArgumentParser()
