@@ -8,4 +8,4 @@
 
 #SBATCH --account=ec255
 
-srun ./run_comet.sh
+srun run_comet.sh

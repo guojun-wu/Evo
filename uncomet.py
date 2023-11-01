@@ -22,4 +22,4 @@ class COMET:
         model_output = self.model.predict(data, batch_size=16, gpus=1)
         return model_output.scores
 
-        #4984643
+        #4984772
