@@ -2,7 +2,7 @@
 
 #SBATCH --job-name=evo_comet
 #SBATCH --time=00:20:00
-#SBATCH --partition=gpu-cascade
+#SBATCH --partition=gpu
 #SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
 
