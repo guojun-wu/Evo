@@ -8,6 +8,8 @@
 #SBATCH --account=ec255
 #SBATCH --output=job.out
 
+export TRANSFORMERS_CACHE=/work/ec255/ec255/guojun/.cache/huggingface/hub
+export MPLCONFIGDIR=/work/ec255/ec255/guojun/.config/matplotlib
 cd /work/ec255/ec255/guojun/Evo
 
 source /work/ec255/ec255/guojun/evo/bin/activate
