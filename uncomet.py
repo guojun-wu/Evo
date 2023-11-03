@@ -2,7 +2,7 @@ from comet import download_model, load_from_checkpoint
 
 class COMET:
     def __init__(self, test_mode=False):
-        model_path = download_model("Unbabel/wmt22-comet-da", "/home/ec255/ec255/guojun/.cache/huggingface/hub/", local_files_only=True)
+        model_path = download_model("Unbabel/wmt22-comet-da", "/work/ec255/ec255/guojun/.cache/huggingface/hub/", local_files_only=True)
         self.model = load_from_checkpoint(model_path)
         self.test_mode = test_mode
         print("Model cache directory:", model_path)
