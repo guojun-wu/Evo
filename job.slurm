@@ -10,7 +10,7 @@
 
 cd /work/ec255/ec255/guojun/Evo
 
-module purge
+
 module load python/3.9.13
 source /work/ec255/ec255/guojun/evo/bin/activate
 
