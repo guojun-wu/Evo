@@ -6,7 +6,7 @@ class COMET:
         model_path = download_model("Unbabel/wmt22-comet-da")
         self.model = load_from_checkpoint(model_path)
         self.test_mode = test_mode
-        print("Model cache directory:", self.model.config.cache_dir)
+        print("Model cache directory:", model_path)
 
     def score(self, src_lines, ref_lines, hyp_lines):
         # transform the lines into the format expected by COMET
