@@ -38,6 +38,9 @@ def main():
 
     languages = ['en', 'de', 'es', 'it', 'zh']
 
+    if not os.path.exists(args.output_path):
+        os.makedirs(args.output_path)
+
     if args.metric != 'bert':
         scorer = set_scorer(args.metric, 'en', args.test)
 
@@ -49,7 +52,6 @@ def main():
             if tgt_lang == src_lang:
                 continue
             print(f'{src_lang} to {tgt_lang}')
-            os.makedirs(f'{args.output_path}/test')
             get_score(scorer, src_lang, tgt_lang, args.metric, args.data_path, args.output_path)
             
 if __name__ == "__main__":
