@@ -41,9 +41,6 @@ def main():
     if not os.path.exists("/work/ec255/ec255/guojun/test"):
         os.makedirs("/work/ec255/ec255/guojun/test")
 
-    if not os.path.exists(args.output_path):
-        os.makedirs(args.output_path)
-
     if args.metric != 'bert':
         scorer = set_scorer(args.metric, 'en', args.test)
 
