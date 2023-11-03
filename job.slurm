@@ -10,7 +10,6 @@
 
 cd /work/ec255/ec255/guojun/Evo
 
-
 source /work/ec255/ec255/guojun/evo/bin/activate
 
 srun ./run_comet.sh

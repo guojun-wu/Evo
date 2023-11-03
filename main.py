@@ -38,6 +38,9 @@ def main():
 
     languages = ['en', 'de', 'es', 'it', 'zh']
 
+    if not os.path.exists("/home/ec255/ec255/guojun/test"):
+        os.makedirs("/home/ec255/ec255/guojun/test")
+
     if not os.path.exists(args.output_path):
         os.makedirs(args.output_path)
 
