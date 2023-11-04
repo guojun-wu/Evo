@@ -3,7 +3,6 @@ import os
 
 class COMET:
     def __init__(self, metric, test_mode=False):
-        assert metric in ['comet', 'unite']
         cache_dir = "/work/ec255/ec255/guojun/.cache/huggingface/hub/"
         models_info = {
             'comet': {
