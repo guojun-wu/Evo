@@ -7,8 +7,8 @@ import os
 def set_scorer(metric, tgt_lang, test_mode=False):
     if metric == 'bert':
         scorer = BERTScore(tgt_lang, test_mode=test_mode)
-    elif metric == 'comet':
-        scorer = COMET(test_mode=test_mode)
+    elif metric in ['comet', 'unite']:
+        scorer = COMET(metric, test_mode=test_mode)
     else:
         raise NotImplementedError
     return scorer

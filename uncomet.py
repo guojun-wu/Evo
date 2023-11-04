@@ -1,8 +1,24 @@
 from comet import download_model, load_from_checkpoint
+import os
 
 class COMET:
-    def __init__(self, test_mode=False):
-        model_path = download_model("Unbabel/wmt22-comet-da", "/work/ec255/ec255/guojun/.cache/huggingface/hub/", local_files_only=True)
+    def __init__(self, metric, test_mode=False):
+        assert metric in ['comet', 'unite']
+        cache_dir = "/work/ec255/ec255/guojun/.cache/huggingface/hub/"
+        models_info = {
+            'comet': {
+                'model_name': 'Unbabel/wmt22-comet-da',
+                'subdir': 'models--Unbabel--wmt22-comet-da',
+            },
+            'unite': {
+                'model_name': 'Unbabel/unite-mup',
+                'subdir': 'models--Unbabel--unite-mup',
+            }
+        }
+
+        model_info = models_info[metric]
+        local_files_only = os.path.exists(cache_dir + model_info['subdir'])
+        model_path = download_model(model_info['model_name'], cache_dir, local_files_only=local_files_only)
         self.model = load_from_checkpoint(model_path)
         self.test_mode = test_mode
         print("Model cache directory:", model_path)
