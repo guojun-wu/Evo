@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=evo_unite
+#SBATCH --job-name=evo
 #SBATCH --time=8:00:00
 #SBATCH --partition=gpu
 #SBATCH --qos=gpu
