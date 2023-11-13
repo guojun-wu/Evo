@@ -42,11 +42,9 @@ def main():
         os.makedirs("/work/ec255/ec255/guojun/test")
 
     if args.metric != 'bert':
-        scorer = set_scorer(args.metric, 'en', args.test)
+        scorer = set_scorer(args.metric, None, args.test)
 
     for tgt_lang in languages:
-        if tgt_lang in ['en', 'de', 'es']:
-            continue
         if args.metric == 'bert':
             scorer = set_scorer(args.metric, tgt_lang, args.test)
 
