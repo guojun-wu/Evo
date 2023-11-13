@@ -5,14 +5,18 @@ class COMET:
     def __init__(self, metric, test_mode=False):
         cache_dir = "/work/ec255/ec255/guojun/.cache/huggingface/hub/"
         models_info = {
-            'comet': {
+            'comet22': {
                 'model_name': 'Unbabel/wmt22-comet-da',
                 'subdir': 'models--Unbabel--wmt22-comet-da',
             },
             'unite': {
                 'model_name': 'Unbabel/unite-mup',
                 'subdir': 'models--Unbabel--unite-mup',
-            }
+            },
+            'comet20': {
+                'model_name': 'Unbabel/wmt20-comet-da',
+                'subdir': 'models--Unbabel--wmt20-comet-da',
+            },
         }
 
         model_info = models_info[metric]
