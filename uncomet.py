@@ -17,11 +17,16 @@ class COMET:
                 'model_name': 'Unbabel/wmt20-comet-da',
                 'subdir': 'models--Unbabel--wmt20-comet-da',
             },
+            'cometkiwi': {
+                'model_name': 'Unbabel/wmt22-cometkiwi-da',
+                'subdir': 'models--Unbabel--wmt22-cometkiwi-da',
+            },
         }
 
         model_info = models_info[metric]
         local_files_only = os.path.exists(cache_dir + model_info['subdir'])
         model_path = download_model(model_info['model_name'], cache_dir, local_files_only=local_files_only)
+        self.metric = metric
         self.model = load_from_checkpoint(model_path)
         self.test_mode = test_mode
         print("Model cache directory:", model_path)
@@ -35,6 +40,10 @@ class COMET:
                 "mt": hyp,
                 "ref": ref
             })
+
+        if self.metric == 'cometkiwi':
+            # COMET-Kiwi requires only src and mt
+            data = [{"src": d["src"], "mt": d["mt"]} for d in data]
         if self.test_mode:
             data = data[:2]
 
