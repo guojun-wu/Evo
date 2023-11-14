@@ -27,7 +27,7 @@ class COMET:
         local_files_only = os.path.exists(cache_dir + model_info['subdir'])
         model_path = download_model(model_info['model_name'], cache_dir, local_files_only=local_files_only)
         self.metric = metric
-        self.model = load_from_checkpoint(model_path, reload_hparams=True)
+        self.model = load_from_checkpoint(model_path)
         self.test_mode = test_mode
         print("Model cache directory:", model_path)
 
