@@ -1,7 +1,8 @@
 import pandas as pd
 import argparse 
-from bert import BERTScore
-from uncomet import COMET
+from metric.bert import BERTScore
+from metric.uncomet import COMET
+from metric.bleu import Sacrebleu
 import os
 
 def set_scorer(metric, tgt_lang, test_mode=False):
@@ -9,6 +10,8 @@ def set_scorer(metric, tgt_lang, test_mode=False):
         scorer = BERTScore(tgt_lang, test_mode=test_mode)
     elif metric in ['comet22', 'unite', 'comet20', 'cometkiwi']:
         scorer = COMET(metric, test_mode=test_mode)
+    elif metric in ['bleu', 'chrf']:
+        scorer = Sacrebleu(metric, tgt_lang, test_mode=test_mode)
     else:
         raise NotImplementedError
     return scorer
@@ -38,14 +41,11 @@ def main():
 
     languages = ['en', 'de', 'es', 'it', 'zh']
 
-    if not os.path.exists("/work/ec255/ec255/guojun/test"):
-        os.makedirs("/work/ec255/ec255/guojun/test")
-
-    if args.metric != 'bert':
+    if args.metric not in ['bert', 'bleu']:
         scorer = set_scorer(args.metric, None, args.test)
 
     for tgt_lang in languages:
-        if args.metric == 'bert':
+        if args.metric in ['bert', 'bleu']:
             scorer = set_scorer(args.metric, tgt_lang, args.test)
 
         for src_lang in languages:
