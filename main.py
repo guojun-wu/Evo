@@ -1,6 +1,6 @@
 import pandas as pd
 import argparse 
-from metric.bert import BERTScore
+# from metric.bertscore import BERTScore
 from metric.uncomet import COMET
 from metric.bleu import Sacrebleu
 import os
