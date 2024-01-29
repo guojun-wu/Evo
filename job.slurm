@@ -13,7 +13,7 @@ export MPLCONFIGDIR=/work/ec255/ec255/guojun/.config/matplotlib
 cd /work/ec255/ec255/guojun/Evo
 
 module load nvidia/nvhpc/22.2
-source ~/.bashrc
+source /home/ec255/ec255/guojun/.bashrc
 conda activate evo
 
 srun ./run_comet.sh
