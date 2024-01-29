@@ -21,6 +21,10 @@ class COMET:
                 'model_name': 'Unbabel/wmt22-cometkiwi-da',
                 'subdir': 'models--Unbabel--wmt22-cometkiwi-da',
             },
+            'mscomet22qe': {
+                'model_name': 'MS-COMET-QE-22',
+                'subdir': 'checkpoints--MS-COMET-QE-22',
+            },
         }
 
         model_info = models_info[metric]
@@ -41,7 +45,7 @@ class COMET:
                 "ref": ref
             })
 
-        if self.metric == 'cometkiwi':
+        if self.metric in ['cometkiwi', 'mscomet22qe']:
             # COMET-Kiwi requires only src and mt
             data = [{"src": d["src"], "mt": d["mt"]} for d in data]
         if self.test_mode:
