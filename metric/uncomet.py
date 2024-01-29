@@ -21,19 +21,18 @@ class COMET:
                 'model_name': 'Unbabel/wmt22-cometkiwi-da',
                 'subdir': 'models--Unbabel--wmt22-cometkiwi-da',
             },
-            'mscomet22qe': {
-                'model_name': 'MS-COMET-QE-22',
-                'subdir': 'checkpoints--MS-COMET-QE-22',
-            },
         }
+        if metric in models_info:
+            model_info = models_info[metric]
+            local_files_only = os.path.exists(cache_dir + model_info['subdir'])
+            checkpoint_path = download_model(model_info['model_name'], cache_dir, local_files_only=local_files_only)
+        elif metric == 'mscomet22qe':
+            checkpoint_path = "checkpoints/MS-COMET-QE-22/model/MS-COMET-QE-22.ckpt"
 
-        model_info = models_info[metric]
-        local_files_only = os.path.exists(cache_dir + model_info['subdir'])
-        model_path = download_model(model_info['model_name'], cache_dir, local_files_only=local_files_only)
         self.metric = metric
-        self.model = load_from_checkpoint(model_path)
+        self.model = load_from_checkpoint(checkpoint_path)
         self.test_mode = test_mode
-        print("Model cache directory:", model_path)
+        print("Model cache directory:", checkpoint_path)
 
     def score(self, src_lines, ref_lines, hyp_lines):
         # transform the lines into the format expected by COMET
