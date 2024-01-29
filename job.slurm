@@ -12,7 +12,7 @@ export TRANSFORMERS_CACHE=/work/ec255/ec255/guojun/.cache/huggingface/hub
 export MPLCONFIGDIR=/work/ec255/ec255/guojun/.config/matplotlib
 cd /work/ec255/ec255/guojun/Evo
 
-module load nvidia/nvhpc/22.2
+module load nvidia/nvhpc/22.11
 source /work/ec255/ec255/guojun/miniconda/etc/profile.d/conda.sh
 conda activate evo
 
