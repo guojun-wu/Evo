@@ -27,7 +27,7 @@ class COMET:
             local_files_only = os.path.exists(cache_dir + model_info['subdir'])
             checkpoint_path = download_model(model_info['model_name'], cache_dir, local_files_only=local_files_only)
         elif metric == 'mscomet22qe':
-            checkpoint_path = "checkpoints/MS-COMET-QE-22/model/MS-COMET-QE-22.ckpt"
+            checkpoint_path = "/work/ec255/ec255/guojun/checkpoints/MS-COMET-QE-22/model/MS-COMET-QE-22.ckpt"
 
         self.metric = metric
         self.model = load_from_checkpoint(checkpoint_path)
