@@ -75,7 +75,7 @@ def all(gap=1):
     for lp in lps:
             df = pd.DataFrame()
             for metric in metrics:
-                    df[metric] = pd.read_csv(score_path + f'{metric}.csv')[lp]
+                    df[metric] = pd.read_csv(corpus_score_path + f'{metric}.csv')[lp]
             # remove rows with ties, while keeping the order
             df = df.drop_duplicates(subset=metrics, keep='first')
             df = df.reset_index(drop=True)
@@ -99,7 +99,7 @@ def rolling(gap=1, sample_size=10):
     for lp in lps:
             df = pd.DataFrame()
             for metric in metrics:
-                    df[metric] = pd.read_csv(score_path + f'{metric}.csv')[lp]
+                    df[metric] = pd.read_csv(corpus_score_path + f'{metric}.csv')[lp]
             # remove rows with ties, while keeping the order
             df = df.drop_duplicates(subset=metrics, keep='first')
             df = df.reset_index(drop=True)
