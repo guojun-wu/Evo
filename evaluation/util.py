@@ -42,7 +42,9 @@ def generate_tex(correlations):
     df.columns = subset_names
     df.index = [metric_dict[metric] for metric in metrics]
     df = df.round(3)
-    df.to_latex('result/sub_correlations.tex', escape=False, float_format="%.3f",caption='Correlation between each metric and time for each subset of language pairs.', label='tab:sub_correlations')
+    # refomat the vlaues to percentage
+    df = df.map(lambda x: f'{x*100:.1f}')
+    df.to_latex('result/sub_correlations.tex', escape=False, float_format="%.1f", label='tab:sub_correlations')
     print(df)
 
 def draw_all(correlations, corr_name):
@@ -54,6 +56,7 @@ def draw_all(correlations, corr_name):
                     df.loc[metric, lp] = np.sum(equals) / len(equals)
     df.index = [metric_dict[metric] for metric in metrics]
     df = df.round(3)
+    
     # draw the heatmap
     plt.figure(figsize=(20, 10))
     sns.heatmap(df, annot=True, fmt='.3f', cmap='Blues', linewidths=.5)
@@ -62,7 +65,10 @@ def draw_all(correlations, corr_name):
     
     plt.title(f'Correlation between each metric and time for each language pair ({corr_name})')
 
+    plt.savefig(f'result/{corr_name}_heatmap.png')
     plt.show()
+    # save the figure
+    
 
 def all(gap=1):
     corr_dict = {'Accuracy': acc, 'Pearson': pearson, 'Spearman': spearman}
@@ -86,7 +92,7 @@ def all(gap=1):
 
     # draw the heatmap
     generate_tex(correlations)
-    draw_all(correlations, corr_name)
+    return correlations, corr_name
 
 def rolling(gap=1, sample_size=10):
     corr_dict = {'Accuracy': acc, 'Pearson': pearson, 'Spearman': spearman}
@@ -115,10 +121,24 @@ def rolling(gap=1, sample_size=10):
                         corr_list.append(np.sum(equals) / len(equals))
                 correlations[(lp, metric)] = corr_list
 
-    draw_rolling(correlations, corr_name)
+    return correlations, corr_name
+
+def draw_roll_mean(correlations, corr_name):
+        all_correlations = {}
+        for metric in metrics:
+                all_correlations[metric] = pd.DataFrame([correlations[(lp, metric)] for lp in lps]).mean(axis=0)
+
+        fig, ax = plt.subplots(figsize=(20, 10))
+        for metric in metrics:
+                ax.plot(all_correlations[metric], label=metric, color=colors[metric])
+        ax.set_title(corr_name + ' between each metric and time', fontsize=20)
+        ax.set_xlabel('Step')
+        ax.set_ylabel(corr_name)
+        ax.legend()
+        plt.show()
 
 def draw_rolling(correlations, corr_name):
-    fig, axes = plt.subplots(nrows=4, ncols=4, figsize=(20, 20))
+    fig, axes = plt.subplots(nrows=4, ncols=3, figsize=(20, 20))
     for i, ax in enumerate(axes.flatten()):
             lp = lps[i]
             for metric in metrics:
@@ -137,7 +157,7 @@ def draw_rolling(correlations, corr_name):
     plt.show()
     
 def main():
-    all(11)
+    rolling(gap=11, sample_size=24)
 
 if __name__ == '__main__':
     main()
