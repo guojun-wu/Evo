@@ -2,15 +2,16 @@ import pandas as pd
 import sacrebleu
 
 def main():
-    src_lang = 'en'
-    tgt_lang = 'zh'
+    src_lang = 'zh'
+    tgt_lang = 'en'
     data_path = 'evo_data'
 
     df = pd.read_csv(f'{data_path}/{src_lang}-{tgt_lang}.csv')
     target = []
-    deepl_path = "deepl/en_zh.txt"
+    deepl_path = f"deepl/{src_lang}_{tgt_lang}.txt"
     with open(deepl_path, 'r', encoding='utf-8') as f:
         target = f.readlines()
+    target = df['target'].tolist()
 
     score_list = []
 

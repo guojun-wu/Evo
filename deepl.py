@@ -39,14 +39,12 @@ def translate_and_save(input_texts, output_file, target_lang, source_lang, auth_
             f.write(translation + '\n')
 
 data_path = 'evo_data'
-src_lang = 'en'
-tgt_lang = 'zh'
+src_lang = 'zh'
+tgt_lang = 'en'
 auth_key = '3acb081d-7e8c-4184-be27-1b4b9a075290:fx'
 
 df = pd.read_csv(f'{data_path}/{src_lang}-{tgt_lang}.csv')
 source = df['source'].tolist()
-
-source = source[4:]
 
 output_path = 'deepl'
 output_file = f'{output_path}/{src_lang}_{tgt_lang}.txt'
