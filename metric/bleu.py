@@ -23,3 +23,4 @@ class Sacrebleu:
             result = self.scorer.sentence_score(ref, [hyp])
             sentence_score.append(result.score)
         return sentence_score
+    
