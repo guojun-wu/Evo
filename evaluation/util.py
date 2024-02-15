@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from SETTINGS import *
+from evaluation.SETTINGS import *
 
 def pearson(x):
     y = list(range(1, len(x)+1))
@@ -69,7 +69,6 @@ def draw_all(correlations, corr_name):
     plt.show()
     # save the figure
     
-
 def all(gap=1):
     corr_dict = {'Accuracy': acc, 'Pearson': pearson, 'Spearman': spearman}
     corr_name = 'Accuracy'
@@ -123,6 +122,30 @@ def rolling(gap=1, sample_size=10):
 
     return correlations, corr_name
 
+def draw_roll_subset(correlations, corr_name):
+        subset_correlations = {}
+        for metric in metrics:
+                for subset in subsets:
+                        subset_correlations[(subset, metric)] = pd.DataFrame(
+                                        [correlations[(lp, metric)] for lp in subsets[subset]]).mean(axis=0)
+        
+        fig, axes = plt.subplots(nrows=4, ncols=2, figsize=(20, 20))
+        for i, ax in enumerate(axes.flatten()):
+                subset = list(subsets.keys())[i+1]
+                for metric in metrics:
+                    ax.plot(subset_correlations[(subset, metric)], label=metric, color=colors[metric]) 
+                ax.set_title(f'{subset.upper()}')
+                ax.set_xlabel(None)
+                ax.set_ylabel(None)
+                ax.tick_params(axis='x', labelrotation=45)
+                ax.legend()
+        fig.suptitle(corr_name + ' between each metric and time', fontsize=20)
+        fig.tight_layout()
+        fig.subplots_adjust(top=0.95)
+
+        # show the figure
+        plt.show()
+
 def draw_roll_mean(correlations, corr_name):
         all_correlations = {}
         for metric in metrics:
@@ -137,7 +160,7 @@ def draw_roll_mean(correlations, corr_name):
         ax.legend()
         plt.show()
 
-def draw_rolling(correlations, corr_name):
+def draw_roll(correlations, corr_name):
     fig, axes = plt.subplots(nrows=4, ncols=3, figsize=(20, 20))
     for i, ax in enumerate(axes.flatten()):
             lp = lps[i]
@@ -157,7 +180,8 @@ def draw_rolling(correlations, corr_name):
     plt.show()
     
 def main():
-    rolling(gap=11, sample_size=24)
+    correlations, corr_name = all(gap=11)
+    draw_all(correlations, corr_name)
 
 if __name__ == '__main__':
     main()

@@ -1,4 +1,4 @@
-metrics = ['mscomet22qe','comet22', 'unite', 'comet20', 'cometkiwi', 'bert', 'bleu', 'chrf']
+metrics = ['comet22', 'unite', 'comet20', 'cometkiwi','mscomet22qe', 'bert', 'bleu', 'chrf']
 
 corpus_score_path = 'result/corpus_'
 
