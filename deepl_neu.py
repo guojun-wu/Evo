@@ -22,8 +22,7 @@ def main():
     with open(deepl_path, 'r', encoding='utf-8') as f:
         target = f.readlines()
 
-    # metrics = ['comet22', 'unite', 'comet20']
-    metrics = ['bert'] 
+    metrics = ['comet22', 'unite', 'comet20']
 
     for metric in metrics:
         if metric != 'bert':
