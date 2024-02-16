@@ -11,7 +11,6 @@ def main():
     deepl_path = f"deepl/{src_lang}_{tgt_lang}.txt"
     with open(deepl_path, 'r', encoding='utf-8') as f:
         target = f.readlines()
-    target = df['target'].tolist()
 
     score_list = []
 
