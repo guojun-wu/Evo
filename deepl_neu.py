@@ -37,5 +37,7 @@ def main():
             os.makedirs(f'deepl/{metric}')
         score_df.to_csv(f'deepl/{metric}/{src_lang}-{tgt_lang}.csv', index=False)
 
+if __name__ == "__main__":
+    main()
     
         
