@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python deepl_neu.py -s en -t zh
+python deepl_neu.py -s en -t zh --test
