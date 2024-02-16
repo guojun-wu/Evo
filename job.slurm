@@ -16,4 +16,4 @@ module load nvidia/nvhpc/22.11
 source /work/ec255/ec255/guojun/miniconda/etc/profile.d/conda.sh
 conda activate evo
 
-srun ./run_comet.sh
+srun ./run_job.sh
