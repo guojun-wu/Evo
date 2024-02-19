@@ -1,6 +1,6 @@
 metrics = ['comet22', 'unite', 'comet20', 'cometkiwi','mscomet22qe', 'bert', 'bleu', 'chrf']
 
-corpus_score_path = 'result/corpus_'
+corpus_score_path = 'result/sys_'
 
 lps = ['en-de',  'it-de', 'zh-de',
         'de-en', 'it-en', 'zh-en',
@@ -16,7 +16,8 @@ metric_dict = {'mscomet22qe': "MS-COMET-22-QE",'comet22': 'COMET-22', 'unite': '
                 'bert': 'BERTScore', 'bleu': 'BLEU', 'chrf': 'chrF'}
             
 colors = {'mscomet22qe': '#226646', 'comet22': '#9F05C5', 'bert': '#660C16', 'unite': '#CC2732',
-        'comet20': '#9570DD', 'cometkiwi': '#90C825', 'bleu': '#008EF1', 'chrf': '#E6B111', 'vote': '#000000'}
+        'comet20': '#9570DD', 'cometkiwi': '#90C825', 'bleu': '#008EF1', 'chrf': '#E6B111', 'vote': '#000000',
+        'human': '#008EF1', 'deepl': '#FDAE36'}
 
 into_de = ['en-de', 'it-de', 'zh-de']
 into_en = ['de-en',  'it-en', 'zh-en']

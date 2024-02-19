@@ -178,6 +178,20 @@ def draw_roll(correlations, corr_name):
 
     # show the figure
     plt.show()
+
+def get_deep_lp(deep_lp, metric):
+    human_df = pd.read_csv(f'result/sys_{metric}.csv')
+    human_df = human_df[['date', 'en-de', 'en-zh', 'zh-en']]
+
+    tmp_df = human_df[['date', deep_lp]]
+    tmp_df.columns = ['date', 'human']
+    deep_df = pd.read_csv(f'deepl/{metric}/sys_{deep_lp}.csv')
+    deep_df.columns = ['date', 'deepl']
+    
+    merged_df = pd.merge(tmp_df, deep_df, on='date')
+    merged_df = merged_df.drop_duplicates(subset=['human', 'deepl'], keep='first')
+    merged_df = merged_df.reset_index(drop=True)
+    return merged_df
     
 def main():
     correlations, corr_name = all(gap=11)
