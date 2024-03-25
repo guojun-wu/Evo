@@ -34,12 +34,12 @@ def get_score(scorer, src_lang, tgt_lang, metric, data_path, output_path):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', '--metric', type=str, default='bert', help='metric to use')
-    parser.add_argument('--data_path', type=str, default='evo_data', help='data path')
-    parser.add_argument('--output_path', type=str, default='result', help='output path')
+    parser.add_argument('--data_path', type=str, default='data_v2', help='data path')
+    parser.add_argument('--output_path', type=str, default='result_v2', help='output path')
     parser.add_argument('--test', action='store_true', help='test mode')
     args = parser.parse_args()
 
-    languages = ['en', 'de', 'es', 'it', 'zh']
+    languages = ['en', 'de', 'it', 'zh']
 
     if args.metric not in ['bert', 'bleu']:
         scorer = set_scorer(args.metric, None, args.test)
