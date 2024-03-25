@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --job-name=evo
-#SBATCH --time=02:00:00
+#SBATCH --time=00:30:00
 #SBATCH --partition=gpu
 #SBATCH --qos=lowpriority
 #SBATCH --gres=gpu:1
