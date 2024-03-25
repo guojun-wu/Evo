@@ -3,7 +3,7 @@
 #SBATCH --job-name=evo
 #SBATCH --time=02:00:00
 #SBATCH --partition=gpu
-#SBATCH --qos=gpu
+#SBATCH --qos=lowpriority
 #SBATCH --gres=gpu:1
 #SBATCH --account=ec255
 #SBATCH --output=job.out
