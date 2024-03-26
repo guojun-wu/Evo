@@ -26,7 +26,7 @@ class COMET:
             model_info = models_info[metric]
             checkpoint_path = download_model(model_info['model_name'])
         elif metric == 'mscomet22qe':
-            checkpoint_path = "checkpoints/MS-COMET-QE-22/model/MS-COMET-QE-22.ckpt"
+            checkpoint_path = "/home/user/guwu/checkpoints/MS-COMET-QE-22/model/MS-COMET-QE-22.ckpt"
 
         self.metric = metric
         self.model = load_from_checkpoint(checkpoint_path)
