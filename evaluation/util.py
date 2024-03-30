@@ -2,8 +2,20 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 from evaluation.SETTINGS import *
 
+def get_metrics_per_lp(lp):
+        df = pd.DataFrame()
+        for metric in metrics:
+                df_v1 = pd.read_csv(corpus_score_path + f'{metric}.csv')
+                score_v2_path = 'result_v2/sys_' + metric + '.csv'
+                df_v2 = pd.read_csv(score_v2_path)
+                df[metric] = pd.concat([df_v1[lp], df_v2[lp]], ignore_index=True)
+       
+        df = df.drop_duplicates(subset=metrics, keep='first')
+        df = df.reset_index(drop=True)
+        return df
 def pearson(x):
     y = list(range(1, len(x)+1))
     return np.corrcoef(x, y)[0, 1]
@@ -78,12 +90,7 @@ def all(gap=1):
     correlations = {}
 
     for lp in lps:
-            df = pd.DataFrame()
-            for metric in metrics:
-                    df[metric] = pd.read_csv(corpus_score_path + f'{metric}.csv')[lp]
-            # remove rows with ties, while keeping the order
-            df = df.drop_duplicates(subset=metrics, keep='first')
-            df = df.reset_index(drop=True)
+            df = get_metrics_per_lp(lp)
             
             # calculate the correlation between each metric and time
             for metric in metrics:
@@ -102,12 +109,7 @@ def rolling(gap=1, sample_size=10):
     correlations = {}
 
     for lp in lps:
-            df = pd.DataFrame()
-            for metric in metrics:
-                    df[metric] = pd.read_csv(corpus_score_path + f'{metric}.csv')[lp]
-            # remove rows with ties, while keeping the order
-            df = df.drop_duplicates(subset=metrics, keep='first')
-            df = df.reset_index(drop=True)
+            df = get_metrics_per_lp(lp)
             
             # calculate the correlation between each metric and time
             for metric in metrics:
@@ -195,7 +197,8 @@ def get_deep_lp(deep_lp, metric):
     
 def main():
     correlations, corr_name = all(gap=11)
-    draw_all(correlations, corr_name)
+#     draw_all(correlations, corr_name)
+    generate_tex(correlations)
 
 if __name__ == '__main__':
     main()
