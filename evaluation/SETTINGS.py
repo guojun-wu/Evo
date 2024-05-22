@@ -1,7 +1,5 @@
 metrics = ['comet22', 'unite', 'comet20', 'cometkiwi','mscomet22qe', 'bert', 'bleu', 'chrf']
 
-corpus_score_path = 'result/sys_'
-
 lps = ['en-de',  'it-de', 'zh-de',
         'de-en', 'it-en', 'zh-en',
         'de-it', 'en-it', 'zh-it',

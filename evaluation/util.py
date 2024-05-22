@@ -4,14 +4,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 from evaluation.SETTINGS import *
+from scipy.stats import spearmanr
 
-def get_metrics_per_lp(lp):
+def get_metrics_per_lp(path, lp):
         df = pd.DataFrame()
         for metric in metrics:
-                df_v1 = pd.read_csv(corpus_score_path + f'{metric}.csv')
-                score_v2_path = 'result_v2/sys_' + metric + '.csv'
-                df_v2 = pd.read_csv(score_v2_path)
-                df[metric] = pd.concat([df_v1[lp], df_v2[lp]], ignore_index=True)
+                tmp_df = pd.read_csv(path + f'sys_{metric}.csv')     
+                df[metric] = tmp_df[lp]
        
         df = df.drop_duplicates(subset=metrics, keep='first')
         df = df.reset_index(drop=True)
@@ -38,6 +37,21 @@ def acc(x, gap=1):
     equals = np.equal(diff_x, diff_y)
     return equals
      
+def plot_heatmap(correlations, corr_name):
+        fig, ax = plt.subplots(figsize=(20, 10))
+        sns.heatmap(correlations, annot=True, ax=ax, cmap='Blues')
+
+        metric_names = [metric_dict[metric] for metric in metrics]
+        ax.set_yticklabels(metric_names, rotation=0)
+
+        ax.set_xlabel(None)
+        ax.set_ylabel(None)
+        ax.set_xticklabels([lp.upper() for lp in lps])
+        if corr_name == 'Spearman':
+            plt.text(4.5, 4.5, '*', fontsize=24, ha='center', color='red')
+        plt.title(f'Correlation between each metric and time for each language pair ({corr_name})')
+        
+        plt.show()
 def generate_tex(correlations):
     sub_correlations = {}
     for subset in subsets:
