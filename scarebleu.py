@@ -5,8 +5,8 @@ import argparse
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_path', type=str, default='data_v2', help='data path')
-    parser.add_argument('--output_path', type=str, default='result_v2', help='output path')
+    parser.add_argument('--data_path', type=str, default='data', help='data path')
+    parser.add_argument('--output_path', type=str, default='result', help='output path')
     parser.add_argument('-m', '--metric', type=str, default='bleu', help='metric to use')
     args = parser.parse_args()
     languages = ['en', 'de', 'it', 'zh']
@@ -41,6 +41,4 @@ def main():
             score_df.to_csv(f'{output_path}/{metric}/{src_lang}-{tgt_lang}.csv', index=False)
 
 if __name__ == "__main__":
-    main()
-                
-           
+    main()                    
