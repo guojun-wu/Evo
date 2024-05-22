@@ -32,8 +32,8 @@ all_4 = ['en-de',  'it-de', 'zh-de',
         'de-en', 'it-en', 'zh-en',
         'de-it', 'en-it', 'zh-it',
         'de-zh', 'en-zh', 'it-zh']
-subsets = {'all': all_4, 'into_en': into_en, 'from_en': from_en, 'into_de': into_de, 'from_de': from_de,'into_it': into_it, 
-        'from_it': from_it, 'into_zh': into_zh, 'from_zh': from_zh}
+subsets = {'all': all_4, 'into_en': into_en, 'from_en': from_en, 'into_de': into_de, 'into_it': into_it, 
+         'into_zh': into_zh}
 
 subsets_dict = {'all': 'All', 'into_en': 'Into EN', 'from_en': 'From EN', 'into_de': 'Into DE', 'from_de': 'From DE',
         'into_it': 'Into IT', 'from_it': 'From IT', 'into_zh': 'Into ZH', 'from_zh': 'From ZH', 'from_es': 'From ES'}
