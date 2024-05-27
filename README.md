@@ -34,7 +34,7 @@ Run the following command to get the score for all the neural metrics:
 python neu_metric.py -d <data_path> -o <output_path> -m <metric>
 ```
 
-## The analysis and the visualization of the results will be avaliable in the view_of_RQ.ipynb
+## The visualization of the results will be avaliable in the view_of_RQ.ipynb
 
 
 
