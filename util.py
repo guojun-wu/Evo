@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
-from evaluation.SETTINGS import *
+from SETTINGS import *
 from scipy.stats import spearmanr
 
 def get_metrics_per_lp(path, lp):
@@ -201,7 +201,7 @@ def get_deep_lp(deep_lp, metric):
 
     tmp_df = human_df[['date', deep_lp]]
     tmp_df.columns = ['date', 'human']
-    deep_df = pd.read_csv(f'deepl/{metric}/sys_{deep_lp}.csv')
+    deep_df = pd.read_csv(f'deepl/result/{metric}/sys_{deep_lp}.csv')
     deep_df.columns = ['date', 'deepl']
     
     merged_df = pd.merge(tmp_df, deep_df, on='date')
@@ -209,10 +209,3 @@ def get_deep_lp(deep_lp, metric):
     merged_df = merged_df.reset_index(drop=True)
     return merged_df
     
-def main():
-    correlations, corr_name = all(gap=11)
-#     draw_all(correlations, corr_name)
-    generate_tex(correlations)
-
-if __name__ == '__main__':
-    main()

@@ -4,10 +4,6 @@ lps = ['en-de',  'it-de', 'zh-de',
         'de-en', 'it-en', 'zh-en',
         'de-it', 'en-it', 'zh-it',
          'de-zh', 'en-zh', 'it-zh']
-        # ['en-de', 'es-de', 'it-de', 'zh-de',
-        # 'de-en', 'es-en', 'it-en', 'zh-en',
-        # 'de-it', 'en-it', 'es-it', 'zh-it',
-        # 'de-zh', 'en-zh', 'es-zh', 'it-zh']
     
 metric_dict = {'mscomet22qe': "MS-COMET-22-QE",'comet22': 'COMET-22', 'unite': 'UniTE', 
                 'comet20': 'COMET-20', 'cometkiwi': 'COMET-Kiwi', 
