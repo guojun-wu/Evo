@@ -206,7 +206,7 @@ def get_deep_lp(deep_lp, metric):
     
     merged_df = pd.merge(tmp_df, deep_df, on='date')
     merged_df = merged_df.drop_duplicates(subset=['human', 'deepl'], keep='first')
-    merged_df = merged_df.reset_index(drop=True)
+    merged_df = merged_df.sort_values(by=['date']).reset_index(drop=True)
     return merged_df
         
 
