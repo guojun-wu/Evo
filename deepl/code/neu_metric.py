@@ -16,7 +16,7 @@ def get_sys(df):
     sys_df = pd.DataFrame()
 
     for col in df.columns:
-        new_row = pd.DataFrame({'date': [col], lp: [df[col].mean()]})
+        new_row = pd.DataFrame({'date': [col], "score": [df[col].mean()]})
         sys_df = pd.concat([sys_df, new_row])
     
     sys_df['date'] = pd.to_datetime(sys_df['date']).dt.strftime('%Y-%m-%d')
