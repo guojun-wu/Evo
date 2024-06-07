@@ -1,7 +1,7 @@
 import pandas as pd
 import argparse 
-from metric.bertscore import BERTScore
-from metric.uncomet import COMET
+from neu_metric.bertscore import BERTScore
+from neu_metric.uncomet import COMET
 import os
 def get_sys(df):
     sys_df = pd.DataFrame()
