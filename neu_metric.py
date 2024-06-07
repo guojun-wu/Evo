@@ -1,7 +1,7 @@
 import pandas as pd
 import argparse 
-from neu_metric.bertscore import BERTScore
-from neu_metric.comet import COMET
+from metric.bertscore import BERTScore
+from metric.comet import COMET
 import os
 
 def set_scorer(metric, tgt_lang, test_mode=False):
