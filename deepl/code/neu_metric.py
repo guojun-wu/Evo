@@ -1,5 +1,3 @@
-import pandas as pd
-import argparse 
 import sys
 import os
 
@@ -9,8 +7,11 @@ project_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
 if project_root not in sys.path:
     sys.path.append(project_root)
 from metric.bertscore import BERTScore
-from metric.uncomet import COMET
-import os
+from metric.comet import COMET
+
+import pandas as pd
+import argparse 
+
 def get_sys(df):
     sys_df = pd.DataFrame()
 
@@ -59,7 +60,7 @@ def main():
         score_df.to_csv(f'deepl/result/{metric}/{src_lang}-{tgt_lang}_v2.csv', index=False)
 
         sys_df = get_sys(score_df)
-        sys_df.to_csv(f'deepl/{metric}/sys_{src_lang}-{tgt_lang}_v2.csv', index=False)
+        sys_df.to_csv(f'deepl/result/{metric}/sys_{src_lang}-{tgt_lang}_v2.csv', index=False)
 
 if __name__ == "__main__":
     main()
