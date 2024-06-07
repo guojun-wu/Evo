@@ -9,7 +9,7 @@ class COMET:
             'comet20': 'Unbabel/wmt20-comet-da',
             'cometkiwi': 'Unbabel/wmt22-cometkiwi-da',
         }
-        if metric in models_info:
+        if metric in model_info:
             checkpoint_path = download_model(model_info[metric])
         # the checkpoint for mscomet22qe should be downloaded from 
         elif metric == 'mscomet22qe':
