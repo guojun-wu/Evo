@@ -46,8 +46,7 @@ def main():
 
     for metric in metrics:
         if metric != 'bert':
-            continue
-            # scorer = COMET(metric, test_mode=test_mode)
+            scorer = COMET(metric, test_mode=test_mode)
         else:
             scorer = BERTScore(tgt_lang, test_mode=test_mode)
 
