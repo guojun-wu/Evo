@@ -60,6 +60,7 @@ def main():
         score_df.to_csv(f'deepl/result/{metric}/{src_lang}-{tgt_lang}_v2.csv', index=False)
 
         sys_df = get_sys(score_df)
+        sys_df = sys_df.sort_values(by='date')
         sys_df.to_csv(f'deepl/result/{metric}/sys_{src_lang}-{tgt_lang}_v2.csv', index=False)
 
 if __name__ == "__main__":

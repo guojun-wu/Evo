@@ -43,7 +43,7 @@ def main():
         score_df['score'] = score_list
         # reformat date from February-16-2024 to 2024-02-16
         score_df['date'] = pd.to_datetime(score_df['date']).dt.strftime('%Y-%m-%d')
-
+        score_df = score_df.sort_values(by='date')
         if not os.path.exists(f'deepl/result/{metric}'):
                 os.makedirs(f'deepl/result/{metric}')
         score_df.to_csv(f'deepl/result/{metric}/sys_{src_lang}-{tgt_lang}.csv', index=False)
