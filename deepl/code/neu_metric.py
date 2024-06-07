@@ -1,7 +1,15 @@
 import pandas as pd
 import argparse 
-from .metric.bertscore import BERTScore
-from .metric.uncomet import COMET
+import sys
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
+
+if project_root not in sys.path:
+    sys.path.append(project_root)
+from metric.bertscore import BERTScore
+from metric.uncomet import COMET
 import os
 def get_sys(df):
     sys_df = pd.DataFrame()
