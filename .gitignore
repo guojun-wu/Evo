@@ -1,12 +1,12 @@
 /.DS_Store
 /evo_data
 /__pycache__
-/result
+/result_legacy
 /evo_data.zip
 /evaluation/__pycache__
 /metric/__pycache__
 /deep
-/deepl/result
+/deepl/legacy
 /deepl.zip
 /.gitingore
 /data_v2
@@ -15,3 +15,6 @@
 /img
 /job.slurm
 /view_of_RQ.ipynb
+/result
+/deepl/result
+

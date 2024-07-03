@@ -39,17 +39,15 @@ def acc(x, gap=1):
      
 def plot_heatmap(correlations, corr_name):
         fig, ax = plt.subplots(figsize=(20, 10))
-        sns.heatmap(correlations, annot=True, ax=ax, cmap='Blues')
-
+        sns.heatmap(correlations, annot=True, annot_kws={"size": 12}, ax=ax, cmap='Blues')
         metric_names = [metric_dict[metric] for metric in metrics]
-        ax.set_yticklabels(metric_names, rotation=0)
-
+        ax.set_yticklabels(metric_names, rotation=15, fontsize=12)
         ax.set_xlabel(None)
         ax.set_ylabel(None)
-        ax.set_xticklabels([lp.upper() for lp in lps])
+        ax.set_xticklabels([lp.upper() for lp in lps], fontsize=12)
         if corr_name == 'Spearman':
             plt.text(4.5, 4.5, '*', fontsize=24, ha='center', color='red')
-        plt.title(f'Correlation between each metric and time for each language pair ({corr_name})')
+        # plt.title(f'Correlation between each metric and time for each language pair ({corr_name})')
         
         plt.show()
 def generate_tex(correlations):

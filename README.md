@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 Download the data from [Abstract Meaning Representation (AMR) Annotation Release 2.0](https://catalog.ldc.upenn.edu/LDC2017T10) and [Abstract Meaning Representation 2.0 - Four Translations](https://catalog.ldc.upenn.edu/LDC2020T07).
 
-The translations we collected will be released soon.
+The translations we collected will be released soon. Due to the origin of the translations, the data we use is to be licensed by the Linguistic Data Consortium. If you would like to use this dataset for your research, please contact the authors. The collection of the data continues.
 
 ## Reorganize data
 
