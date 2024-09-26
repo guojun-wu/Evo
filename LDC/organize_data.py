@@ -85,6 +85,8 @@ def main():
                 dataframes[key][folder] = read_file(file_path)
 
     # Save the dataframes to csv files
+    if not os.path.exists('data'):
+        os.makedirs('data')
     for key in dataframes:
         df = dataframes[key]
         df.to_csv(f'data/{key}.csv', index=False)
