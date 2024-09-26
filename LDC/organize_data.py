@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 from folder_filter import Folder_filter
+import argparse
 
 def read_file(file):
     with open(file, 'r') as f:
@@ -36,8 +37,13 @@ def select_folders(directory_path, reference_path):
 
    
 def main():
-    directory_path = 'LDC/translation-files-new' # Path to the directory containing the system outputs
-    reference_path = 'LDC/amr-files' # Path to the directory containing the reference files
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dir_path', type=str, default='LDC/translation-files-new', help='path for the translation folders')
+    parser.add_argument('--ref_path', type=str, default='LDC/amr-files', help='path for the reference files')
+    args = parser.parse_args()
+
+    directory_path = args.dir_path # Path to the directory containing the system outputs
+    reference_path = args.ref_path # Path to the directory containing the reference files
 
     languages = ['de', 'en', 'es', 'it', 'zh']
     # Create a dictionary of dataframes for each language pair
