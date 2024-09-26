@@ -18,7 +18,7 @@ The translations we collected will be released soon. Due to the origin of the tr
 After downloading the data, run the following command to reorganize the data:
 
 ```bash
-python LDC/organize_data.py -d <data_path> -o <output_path>
+python LDC/organize_data.py -d <path for the translation folders> -r <path for the reference files>
 ```
 
 Reorganize the data in a format that the first column is the source sentence and the second column is the target sentence. The rest will be the translations from each date.

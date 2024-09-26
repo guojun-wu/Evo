@@ -38,8 +38,8 @@ def select_folders(directory_path, reference_path):
    
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dir_path', type=str, default='LDC/translation-files-new', help='path for the translation folders')
-    parser.add_argument('--ref_path', type=str, default='LDC/amr-files', help='path for the reference files')
+    parser.add_argument('-d','--dir_path', type=str, default='LDC/translation-files-new', help='path for the translation folders')
+    parser.add_argument('-r', '--ref_path', type=str, default='LDC/amr-files', help='path for the reference files')
     args = parser.parse_args()
 
     directory_path = args.dir_path # Path to the directory containing the system outputs
